@@ -6,6 +6,7 @@ const CourseInfo = {
   
   // The provided assignment group.
   const AssignmentGroup = {
+    
     id: 12345,
     name: "Fundamentals of JavaScript",
     course_id: 451,
@@ -83,9 +84,9 @@ const CourseInfo = {
 
   
 
-?
 
-// Try Catch /// 
+// Try Catch // 
+// This confirms that the course-id for an Assignment Group is correct
 
 try {
 	if (AssignmentGroup.course_id === CourseInfo.id) {
@@ -95,5 +96,17 @@ try {
 	} 
     } catch (error) {
 	    console.log(error, 'ERROR');
+    }
+
+try {
+    AssignmentGroup.assignments.forEach(assignment => {
+    if (assignment.points_possible <= 0) {
+        throw "ERROR: points_possible must be > 0";
+    } else {
+        throw "confirmed points_possible is > 0"
+    }
+ });   
+    } catch (error) {
+        console.log(error, 'ERROR');
     }
 
