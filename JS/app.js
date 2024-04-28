@@ -10,6 +10,7 @@ const CourseInfo = {
     name: "Fundamentals of JavaScript",
     course_id: 451,
     group_weight: 25,
+    // nested array
     assignments: [
       {
         id: 1,
@@ -28,13 +29,9 @@ const CourseInfo = {
         name: "Code the World",
         due_at: "3156-11-15",
         points_possible: 500
-      }
-    //    id: 4,
-    //    name: "Proper File Structure"
-    //    due at: "2023-03-25"
-    //    points_possible: 150
-
-    ]
+      }]
+   
+    
   };
   
   // The provided learner submission data.
@@ -83,6 +80,20 @@ const CourseInfo = {
   
 //   function getLearnerData(CourseInfo, AssignmentGroup,[LearnerSubmissions]) 
 
-  getLearnerData(451,)
+
   
+
+?
+
+// Try Catch /// 
+
+try {
+	if (AssignmentGroup.course_id === CourseInfo.id) {
+		console.log('Match');
+	} else {
+		throw "Mismatch - wrong course";
+	} 
+    } catch (error) {
+	    console.log(error, 'ERROR');
+    }
 
