@@ -74,7 +74,7 @@ const CourseInfo = {
       assignment_id: 2,
       submission: {
         submitted_at: "2023-03-07",
-        score: 140
+        score: '140' //changed this to a string
       }
     }
   ];
@@ -98,6 +98,7 @@ try {
 	    console.log(error, 'ERROR');
     }
 
+// This confirms the points_possible key in the nested assignments array is > 0
 try {
     let zeroPointsPossible = false;
 
@@ -116,3 +117,12 @@ try {
         console.log(error, 'ERROR');
 }
 
+// this for if loop confirms that Learner Submission score are number and not strings 
+
+for (let i = 0; i < LearnerSubmissions.length; i++) {
+    const element = LearnerSubmissions[i];
+
+if (typeof element['submission']['score'] !== 'number') {
+    console.log(`the value of score in Learner Submissions index ${i} is not a number`); //reminder you cannot use quotes
+}
+}
