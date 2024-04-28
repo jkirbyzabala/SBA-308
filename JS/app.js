@@ -29,6 +29,11 @@ const CourseInfo = {
         due_at: "3156-11-15",
         points_possible: 500
       }
+    //    id: 4,
+    //    name: "Proper File Structure"
+    //    due at: "2023-03-25"
+    //    points_possible: 150
+
     ]
   };
   
@@ -76,27 +81,8 @@ const CourseInfo = {
     }
   ];
   
-  function getLearnerData(course, ag, submissions) {
-    // here, we would process this data to achieve the desired result.
-    const result = [
-      {
-        id: 125,
-        avg: 0.985, // (47 + 150) / (50 + 150)
-        1: 0.94, // 47 / 50
-        2: 1.0 // 150 / 150
-      },
-      {
-        id: 132,
-        avg: 0.82, // (39 + 125) / (50 + 150)
-        1: 0.78, // 39 / 50
-        2: 0.833 // late: (140 - 15) / 150
-      }
-    ];
+//   function getLearnerData(CourseInfo, AssignmentGroup,[LearnerSubmissions]) 
+
+  getLearnerData(451,)
   
-    return result;
-  }
-  
-  const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
-  
-  console.log(result);
-  
+
