@@ -99,14 +99,20 @@ try {
     }
 
 try {
+    let zeroPointsPossible = false;
+
     AssignmentGroup.assignments.forEach(assignment => {
     if (assignment.points_possible <= 0) {
+        zeroPointsPossible = true;
+        }
+    });
+
+    if (zeroPointsPossible) {
         throw "ERROR: points_possible must be > 0";
     } else {
-        throw "confirmed points_possible is > 0"
-    }
- });   
-    } catch (error) {
+        console.log("All points_possible is > 0");
+    } 
+} catch (error) {
         console.log(error, 'ERROR');
-    }
+}
 
