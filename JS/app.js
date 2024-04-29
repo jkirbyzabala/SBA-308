@@ -84,8 +84,10 @@ function getLearnerData(CourseInfo, AssignmentGroup,LearnerSubmissions) {
 // Try Catch // 
 // This confirms that the course-id for an Assignment Group is correct
 
+let isPartOfCourse = false;
 try {
 	if (AssignmentGroup.course_id === CourseInfo.id) {
+        isPartOfCourse = true;
 		console.log('Match');
 	} else {
 		throw "Mismatch - wrong course";
