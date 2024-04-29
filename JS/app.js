@@ -79,7 +79,7 @@ const CourseInfo = {
     }
   ];
   
-function getLearnerData(CourseInfo, AssignmentGroup,LearnerSubmissions) {
+function getLearnerData(CourseInfo, AssignmentGroup,[LearnerSubmissions]) {
 
 // Try Catch // 
 // This confirms that the course-id for an Assignment Group is correct
@@ -171,5 +171,5 @@ result.push(learnerData);
 
 return result;
 }
-const learnerData = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+const learnerData = getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmissions]);
 console.log(learnerData);
