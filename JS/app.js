@@ -74,7 +74,7 @@ const CourseInfo = {
       assignment_id: 2,
       submission: {
         submitted_at: "2023-03-07",
-        score: '140' //changed this to a string
+        score: '140' //changed this to a string for the purpose of my try catch
       }
     }
   ];
@@ -88,9 +88,9 @@ let isPartOfCourse = false;
 try {
 	if (AssignmentGroup.course_id === CourseInfo.id) {
         isPartOfCourse = true;
-		console.log('Match');
+		console.log('Match - Course ID match. Assignment Group is part of the right course');
 	} else {
-		throw "Mismatch - wrong course";
+		throw "Mismatch - Course ID mismatch. Assignment Group is part of the wrong course";
 	} 
     } catch (error) {
 	    console.log(error, 'ERROR');
@@ -98,9 +98,10 @@ try {
 
 // This confirms the points_possible key in the nested assignments array is > 0
 try {
-    let zeroPointsPossible = false;
+    
+    let zeroPointsPossible= false;
 
-    AssignmentGroup.assignments.forEach(assignment => {
+    AssignmentGroup.assignments.forEach(assignment => { // checked my arrow function worked
     if (assignment.points_possible <= 0) {
         zeroPointsPossible = true;
         }
@@ -121,7 +122,8 @@ for (let i = 0; i < LearnerSubmissions.length; i++) {
 
 if (typeof element['submission']['score'] !== 'number') { // confirm whether to use brackets or . notation for nested arrays
     element['submission']['score'] = Number(element['submission']['score']); //Number converts to a Number
-    console.log(`the value of score in Learner Submissions index ${i} is not a number`); //reminder you cannot use quotes
+    console.log(`the value of score in Learner Submissions index ${i} is not a number. Will review and convert`); //reminder you cannot use quotes
+continue;
 }
 }
 
