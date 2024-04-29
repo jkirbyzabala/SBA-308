@@ -79,11 +79,7 @@ const CourseInfo = {
     }
   ];
   
-//   function getLearnerData(CourseInfo, AssignmentGroup,[LearnerSubmissions]) 
-
-
-  
-
+getLearnerData(CourseInfo, AssignmentGroup,[LearnerSubmissions]) 
 
 // Try Catch // 
 // This confirms that the course-id for an Assignment Group is correct
@@ -116,13 +112,16 @@ try {
 } catch (error) {
         console.log(error, 'ERROR');
 }
-
 // this for if loop confirms that Learner Submission score are number and not strings 
 
 for (let i = 0; i < LearnerSubmissions.length; i++) {
     const element = LearnerSubmissions[i];
 
 if (typeof element['submission']['score'] !== 'number') {
+    return Number(['submission']['score']);
     console.log(`the value of score in Learner Submissions index ${i} is not a number`); //reminder you cannot use quotes
 }
+// ask ohw
 }
+
+const result = [];
