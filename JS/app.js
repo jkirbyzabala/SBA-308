@@ -79,7 +79,7 @@ const CourseInfo = {
     }
   ];
   
-getLearnerData(CourseInfo, AssignmentGroup,[LearnerSubmissions]) 
+function getLearnerData(CourseInfo, AssignmentGroup,LearnerSubmissions) {
 
 // Try Catch // 
 // This confirms that the course-id for an Assignment Group is correct
@@ -125,15 +125,47 @@ if (typeof element['submission']['score'] !== 'number') { // confirm whether to 
 
 const result = [];
 
-LearnerSubmissions.forEach(function(learnerHandedIn) {
-    const learnerId = learnerHandedIn.learner_id;
-    const assignments = AssignmentGroup.assignments;
+LearnerSubmissions.forEach(function(learnerHandedIn) { //forEach iterates over each object in LearnerSubmissions array 
+    const learnerId = learnerHandedIn.learner_id; //finds the learner id property in the array assigns it to learnerId
+    const assignments = AssignmentGroup.assignments; //finds the assignments prpoerty and assigns it to assignments 
     const learnerAssignments = LearnerSubmissions.filter(function(eachPerson) {
-        return eachPerson.learner_id ===learnerId;
-
+        return eachPerson.learner_id === learnerId; // this is a condition; if this is true it is include in the Learner Assignments array
     });
 
-    let weightedGrade = 0;
+    let weightedGrade = 0; //created to track score
     let totalGrade = 0;
-    
+
+// this is for calculating the learner's weighted grade and total grade
+
+learnerAssignments.forEach(function(hw) {
+    const assignment = assignments.find(function(assignment) { //used find method to 
+        return assignment.id === hw.assignment_id; // match the submitted hw with the id in the assignment array
+    });
+
+    const pointsPossible = assignment.points_possible;
+    let score = hw.submission.score;
+
+    const dateDue = assignment.due_at;
+    const dateSubmitted = hw.submission.submitted_at;
+
+    if (dateSubmitted > dateDue) {
+        score -= (pointsPossible * 0.1); // deducting 10% if the assignment was late
+    }
+
+        weightedGrade += (score / pointsPossible) * (pointsPossible * AssignmentGroup.group_weight / 100);
+        totalGrade += pointsPossible * (AssignmentGroup.group_weight / 100);
+});
+
+
+const learnerData = {
+    id: learnerId,
+    avg: weightedGrade / totalGrade * 100
+};
+
+result.push(learnerData);
+});
+
+return result;
 }
+const learnerData = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+console.log(learnerData);
