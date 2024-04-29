@@ -117,11 +117,23 @@ try {
 for (let i = 0; i < LearnerSubmissions.length; i++) {
     const element = LearnerSubmissions[i];
 
-if (typeof element['submission']['score'] !== 'number') {
-    return Number(['submission']['score']);
+if (typeof element['submission']['score'] !== 'number') { // confirm whether to use brackets or . notation for nested arrays
+    element['submission']['score'] = Number(element['submission']['score']); //Number converts to a Number
     console.log(`the value of score in Learner Submissions index ${i} is not a number`); //reminder you cannot use quotes
 }
-// ask ohw
 }
 
 const result = [];
+
+LearnerSubmissions.forEach(function(learnerHandedIn) {
+    const learnerId = learnerHandedIn.learner_id;
+    const assignments = AssignmentGroup.assignments;
+    const learnerAssignments = LearnerSubmissions.filter(function(eachPerson) {
+        return eachPerson.learner_id ===learnerId;
+
+    });
+
+    let weightedGrade = 0;
+    let totalGrade = 0;
+    
+}
